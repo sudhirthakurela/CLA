@@ -4,16 +4,19 @@
     <meta charset="utf-8" />
     <title>Creative Learning Academy</title>
     <script>
-      // GitHub Pages SPA redirect trick
-      // Converts the 404 path into a query string and redirects to index.html
-      // which then reads it back and restores the correct route.
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 2).join('/') +
-        '/?p=' + encodeURIComponent(l.pathname.slice(1) + (l.search ? '&q=' + l.search.slice(1) : '') + l.hash)
-      );
-    </script>
+      // GitHub Pages SPA redirect: strip the /CLA base, encode the rest
+      (function() {
+        var l = window.location;
+        var base = l.pathname.split('/').slice(0, 2).join('/'); // e.g. /CLA
+        var rest = l.pathname.split('/').slice(2).join('/');    // e.g. about
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          base + '/?p=' + encodeURIComponent(rest) +
+          (l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : '') +
+          l.hash
+        );
+      })();
+    <\/script>
   </head>
   <body></body>
 </html>
