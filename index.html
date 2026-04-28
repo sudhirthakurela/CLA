@@ -7,13 +7,17 @@
     <meta name="description" content="Creative Learning Academy — Quality child care and preschool with multiple centers in Arlington and Harvard. Nurturing infants, toddlers and preschoolers through creativity, play, and exploration." />
     <meta name="keywords" content="daycare, preschool, child care, Arlington MA, Harvard MA, Creative Learning Academy, infant care, toddler program" />
     <title>Creative Learning Academy | Quality Child Care & Preschool</title>
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var p = window.location.search.match(/[?&]p=([^&]+)/);
+        if (p) {
+          var path = decodeURIComponent(p[1]);
+          window.history.replaceState(null, null,
+            window.location.pathname.split('/').slice(0, 2).join('/') + '/' + path
+          );
+        }
+      })();
+    </script>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+    <link rel="preconnect" href="htt
