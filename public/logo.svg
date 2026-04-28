@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60">
+  <!-- Star/sun icon -->
+  <circle cx="30" cy="30" r="22" fill="#FF6B47"/>
+  <polygon points="30,8 34,22 48,22 37,31 41,45 30,36 19,45 23,31 12,22 26,22" fill="#FFCB47"/>
+  <!-- Text -->
+  <text x="62" y="22" font-family="Nunito, Arial, sans-serif" font-weight="900" font-size="18" fill="#FF6B47">Creative Learning</text>
+  <text x="62" y="44" font-family="Nunito, Arial, sans-serif" font-weight="700" font-size="16" fill="#2EC4B6">Academy</text>
+</svg>
