@@ -9,13 +9,11 @@ export default function Navbar({ onEnrollClick }) {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
 
-  // Close menus on route change
   useEffect(() => {
     setMenuOpen(false)
     setCentersOpen(false)
   }, [location])
 
-  // Add shadow on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll)
@@ -44,9 +42,7 @@ export default function Navbar({ onEnrollClick }) {
               src="/logo.svg"
               alt="Creative Learning Academy"
               className="h-12 w-auto"
-              onError={(e) => {
-                e.target.style.display = 'none'
-              }}
+              onError={(e) => { e.target.style.display = 'none' }}
             />
             <span className="font-display font-900 text-lg leading-tight hidden sm:block">
               <span className="text-brand-coral">Creative Learning</span>
@@ -88,34 +84,42 @@ export default function Navbar({ onEnrollClick }) {
               </button>
 
               {centersOpen && (
-                <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-pop border border-gray-100 overflow-hidden">
-                  <div className="p-2">
-                    <Link
-                      to="/centers"
-                      className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-display font-700 text-brand-coral hover:bg-orange-50 transition-colors"
-                    >
-                      View All Centers →
-                    </Link>
-                    <div className="border-t border-gray-100 my-1" />
-                    {centers.map((center) => (
+                <>
+                  {/* Invisible backdrop to close on outside click — sits BEHIND the dropdown */}
+                  <div
+                    className="fixed inset-0 z-[55]"
+                    onClick={() => setCentersOpen(false)}
+                  />
+                  {/* Dropdown panel — z-[60] keeps it above the backdrop */}
+                  <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-pop border border-gray-100 overflow-hidden z-[60]">
+                    <div className="p-2">
                       <Link
-                        key={center.id}
-                        to={`/centers/${center.slug}`}
-                        className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                        to="/centers"
+                        className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-display font-700 text-brand-coral hover:bg-orange-50 transition-colors"
                       >
-                        <MapPin size={16} className="mt-0.5 text-brand-teal flex-shrink-0" />
-                        <div>
-                          <div className="font-display font-700 text-gray-800 text-sm group-hover:text-brand-teal transition-colors">
-                            {center.name}
-                          </div>
-                          <div className="text-xs text-gray-500 mt-0.5">
-                            {center.city}, {center.state}
-                          </div>
-                        </div>
+                        View All Centers →
                       </Link>
-                    ))}
+                      <div className="border-t border-gray-100 my-1" />
+                      {centers.map((center) => (
+                        <Link
+                          key={center.id}
+                          to={`/centers/${center.slug}`}
+                          className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                        >
+                          <MapPin size={16} className="mt-0.5 text-brand-teal flex-shrink-0" />
+                          <div>
+                            <div className="font-display font-700 text-gray-800 text-sm group-hover:text-brand-teal transition-colors">
+                              {center.name}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-0.5">
+                              {center.city}, {center.state}
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             </div>
           </div>
@@ -192,11 +196,6 @@ export default function Navbar({ onEnrollClick }) {
           </div>
         )}
       </nav>
-
-      {/* Close dropdown when clicking outside */}
-      {centersOpen && (
-        <div className="fixed inset-0 z-40" onClick={() => setCentersOpen(false)} />
-      )}
     </header>
   )
 }
