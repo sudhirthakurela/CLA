@@ -427,6 +427,7 @@ export default function Home({ onEnrollClick }) {
             </button>
             <Link
               to="/contact"
+              state={{ scrollToForm: true }}
               className="border-2 border-white/50 text-white font-display font-700 text-base px-10 py-4 rounded-2xl hover:bg-white/10 transition-all"
             >
               Schedule a Tour
