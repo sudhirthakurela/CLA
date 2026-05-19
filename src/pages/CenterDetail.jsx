@@ -4,15 +4,15 @@ import { getCenterBySlug } from '../data/centers'
 import { programs } from '../data/programs'
 
 const gradients = {
-  'arlington-main':  'from-coral-400 to-orange-400',
-  'arlington-north': 'from-teal-400 to-cyan-400',
-  'harvard':         'from-purple-400 to-violet-500',
+  'arlington-heights': 'from-coral-400 to-orange-400',
+  'arlington':         'from-teal-400 to-cyan-400',
+  'harvard':           'from-purple-400 to-violet-500',
 }
 
 const emojis = {
-  'arlington-main':  '🏡',
-  'arlington-north': '🌟',
-  'harvard':         '🎓',
+  'arlington-heights': '🏡',
+  'arlington':         '🌟',
+  'harvard':           '🎓',
 }
 
 export default function CenterDetail({ onEnrollClick }) {
