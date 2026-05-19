@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { MapPin, Phone, Mail, Clock, CheckCircle, ExternalLink } from 'lucide-react'
 import { centers } from '../data/centers'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', center: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const formRef = useRef(null)
+  const location = useLocation()
+
+  // Scroll to the form when arriving via "Schedule a Tour"
+  useEffect(() => {
+    if (location.state?.scrollToForm) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    }
+  }, [location.state])
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }))
 
@@ -39,7 +51,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Contact form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3" ref={formRef}>
               <h2 className="font-display font-900 text-3xl text-gray-900 mb-8">
                 Send Us a Message
               </h2>
@@ -111,7 +123,7 @@ export default function Contact() {
                       <option>Enrollment Inquiry</option>
                       <option>Schedule a Tour</option>
                       <option>Program Information</option>
-                      <option>Tuition & Subsidies</option>
+                      <option>Tuition &amp; Subsidies</option>
                       <option>General Question</option>
                       <option>Other</option>
                     </select>
