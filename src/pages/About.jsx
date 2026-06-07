@@ -13,6 +13,18 @@ export default function About({ onEnrollClick }) {
         <div className="absolute top-10 right-10 w-72 h-72 bg-brand-coral/10 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-64 h-64 bg-brand-teal/10 rounded-full blur-3xl" />
         <div className="relative max-w-4xl mx-auto text-center px-4">
+
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <Link to="/logo-story">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.svg`}
+                alt="Creative Learning Academy Logo"
+                className="h-24 w-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
+              />
+            </Link>
+          </div>
+
           <p className="text-brand-teal font-display font-700 text-sm uppercase tracking-widest mb-4">
             Our Story
           </p>
