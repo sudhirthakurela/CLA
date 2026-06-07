@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { MapPin, Phone, Mail, Clock, CheckCircle, ExternalLink, Loader } from 'lucide-react'
 import { centers } from '../data/centers'
 
-const FORMSPREE = 'https://formspree.io/f/xqeopvlq'
+const FORMSPREE = 'https://formspree.io/f/xaqzerqw'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', center: '', subject: '', message: '' })
