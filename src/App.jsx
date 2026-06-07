@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import EnrollModal from "./components/EnrollModal"
 import PasswordGate from "./components/PasswordGate"
+import ScrollToTop from "./components/ScrollToTop"
 
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -45,6 +46,7 @@ export default function App() {
 
   return (
     <PasswordGate>
+      <ScrollToTop />
       <Navbar onEnrollClick={() => setEnrollOpen(true)} />
       <main>
         <Routes>
