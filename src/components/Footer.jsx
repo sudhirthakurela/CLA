@@ -125,7 +125,7 @@ export default function Footer({ onEnrollClick }) {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-500 text-xs font-body">
           <p>
-            © {currentYear} Creative Learning Academy, Inc. — All Rights Reserved.
+            © {currentYear} Creative Learning Academy, LLC — All Rights Reserved.
           </p>
           <p className="flex items-center gap-1">
             Made with <Heart size={12} className="text-brand-coral mx-1" fill="#FF6B47" /> for the families we serve
