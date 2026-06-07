@@ -1,8 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60">
-  <!-- Star/sun icon -->
-  <circle cx="30" cy="30" r="22" fill="#FF6B47"/>
-  <polygon points="30,8 34,22 48,22 37,31 41,45 30,36 19,45 23,31 12,22 26,22" fill="#FFCB47"/>
-  <!-- Text -->
-  <text x="62" y="22" font-family="Nunito, Arial, sans-serif" font-weight="900" font-size="18" fill="#FF6B47">Creative Learning</text>
-  <text x="62" y="44" font-family="Nunito, Arial, sans-serif" font-weight="700" font-size="16" fill="#2EC4B6">Academy</text>
+<svg width="100%" viewBox="0 0 560 155" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Creative Learning Academy</title>
+  <desc>Colorful eight-petal sunburst emblem with a star at center, beside the stacked text Creative Learning Academy</desc>
+
+  <circle cx="80" cy="78" r="73" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#FF6B47"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#FFCB47" transform="rotate(45 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#2EC4B6" transform="rotate(90 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#9B5DE5" transform="rotate(135 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#FF6B47" transform="rotate(180 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#FFCB47" transform="rotate(225 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#2EC4B6" transform="rotate(270 80 78)"/>
+  <path d="M 80,9 L 95,41 L 80,53 L 65,41 Z" fill="#9B5DE5" transform="rotate(315 80 78)"/>
+
+  <circle cx="80" cy="78" r="29" fill="white"/>
+  <circle cx="80" cy="78" r="29" fill="none" stroke="#2EC4B6" stroke-width="2.5"/>
+
+  <path d="M 80,61 L 84.11,72.34 L 96.17,72.75 L 86.66,80.16 L 89.99,91.76 L 80,85 L 70.01,91.76 L 73.34,80.16 L 63.83,72.75 L 75.89,72.34 Z" fill="#2EC4B6"/>
+
+  <circle cx="80" cy="78" r="4.5" fill="#FFCB47"/>
+
+  <text x="175" y="58"
+    font-family="'Trebuchet MS','Gill Sans',Arial,sans-serif"
+    font-size="38" font-weight="700" fill="#FF6B47">Creative</text>
+
+  <text x="175" y="103"
+    font-family="'Trebuchet MS','Gill Sans',Arial,sans-serif"
+    font-size="38" font-weight="700" fill="#2EC4B6">Learning</text>
+
+  <circle cx="175" cy="115" r="3" fill="#FF6B47"/>
+  <circle cx="185" cy="115" r="3" fill="#FFCB47"/>
+  <circle cx="195" cy="115" r="3" fill="#2EC4B6"/>
+  <circle cx="205" cy="115" r="3" fill="#9B5DE5"/>
+
+  <text x="175" y="141"
+    font-family="'Trebuchet MS','Gill Sans',Arial,sans-serif"
+    font-size="26" font-weight="400" fill="#2d3748">Academy</text>
 </svg>
