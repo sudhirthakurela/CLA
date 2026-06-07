@@ -216,7 +216,7 @@ export default function Home({ onEnrollClick }) {
         </div>
       </section>
 
-      {/* ─── CENTERS STRIP ─── */
+      {/* ─── CENTERS STRIP ─── */}
       <section className="bg-gray-900 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
