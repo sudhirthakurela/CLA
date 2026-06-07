@@ -13,6 +13,7 @@ import CenterDetail from "./pages/CenterDetail"
 import Programs from "./pages/Programs"
 import Gallery from "./pages/Gallery"
 import Contact from "./pages/Contact"
+import LogoStory from "./pages/LogoStory"
 
 function NotFound() {
   return (
@@ -50,13 +51,14 @@ export default function App() {
       <Navbar onEnrollClick={() => setEnrollOpen(true)} />
       <main>
         <Routes>
-          <Route path="/"              element={<Home     {...enrollProps} />} />
-          <Route path="/about"         element={<About    {...enrollProps} />} />
-          <Route path="/centers"       element={<Centers  {...enrollProps} />} />
+          <Route path="/"              element={<Home       {...enrollProps} />} />
+          <Route path="/about"         element={<About      {...enrollProps} />} />
+          <Route path="/centers"       element={<Centers    {...enrollProps} />} />
           <Route path="/centers/:slug" element={<CenterDetail {...enrollProps} />} />
-          <Route path="/programs"      element={<Programs {...enrollProps} />} />
-          <Route path="/gallery"       element={<Gallery  {...enrollProps} />} />
+          <Route path="/programs"      element={<Programs   {...enrollProps} />} />
+          <Route path="/gallery"       element={<Gallery    {...enrollProps} />} />
           <Route path="/contact"       element={<Contact />} />
+          <Route path="/logo-story"    element={<LogoStory  {...enrollProps} />} />
           <Route path="/privacy"       element={<SimplePage title="Privacy Policy" />} />
           <Route path="/terms"         element={<SimplePage title="Terms of Service" />} />
           <Route path="*"              element={<NotFound />} />
