@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
-import { MapPin, Phone, Mail, Clock, CheckCircle, ExternalLink } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, CheckCircle, ExternalLink, Loader } from 'lucide-react'
 import { centers } from '../data/centers'
+
+const FORMSPREE = 'https://formspree.io/f/xqeopvlq'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', center: '', subject: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
   const formRef = useRef(null)
   const location = useLocation()
 
-  // Scroll to the form when arriving via "Schedule a Tour"
   useEffect(() => {
     if (location.state?.scrollToForm) {
       setTimeout(() => {
@@ -20,11 +21,23 @@ export default function Contact() {
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: wire to Formspree / Netlify Forms / EmailJS
-    console.log('Contact form submission:', form)
-    setSubmitted(true)
+    setStatus('sending')
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -56,7 +69,7 @@ export default function Contact() {
                 Send Us a Message
               </h2>
 
-              {submitted ? (
+              {status === 'success' ? (
                 <div className="bg-teal-50 rounded-4xl p-10 text-center">
                   <CheckCircle size={56} className="text-brand-teal mx-auto mb-4" />
                   <h3 className="font-display font-900 text-2xl text-gray-900 mb-2">Message Sent!</h3>
@@ -65,7 +78,7 @@ export default function Contact() {
                     <strong>{form.email}</strong> within one business day.
                   </p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', center: '', subject: '', message: '' }) }}
+                    onClick={() => { setStatus('idle'); setForm({ name: '', email: '', phone: '', center: '', subject: '', message: '' }) }}
                     className="mt-6 text-brand-teal font-display font-700 text-sm hover:underline"
                   >
                     Send another message
@@ -73,6 +86,11 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {status === 'error' && (
+                    <div className="bg-red-50 border border-red-100 rounded-2xl px-5 py-4 text-sm text-red-600 font-display font-600">
+                      Something went wrong. Please try again or email us directly.
+                    </div>
+                  )}
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-display font-600 text-gray-700 mb-1.5">Full Name *</label>
@@ -138,9 +156,12 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-brand-teal text-white font-display font-800 py-4 rounded-2xl hover:bg-teal-500 transition-all shadow-soft hover:shadow-card hover:-translate-y-0.5"
+                    disabled={status === 'sending'}
+                    className="w-full bg-brand-teal text-white font-display font-800 py-4 rounded-2xl hover:bg-teal-500 transition-all shadow-soft hover:shadow-card hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    Send Message
+                    {status === 'sending' ? (
+                      <><Loader size={18} className="animate-spin" /> Sending…</>
+                    ) : 'Send Message'}
                   </button>
                   <p className="text-xs text-gray-400 text-center">
                     We typically respond within 1 business day. Your information is never shared.
@@ -149,23 +170,15 @@ export default function Contact() {
               )}
             </div>
 
-            {/* Sidebar: Center contacts */}
+            {/* Sidebar */}
             <div className="lg:col-span-2 space-y-6">
               <h2 className="font-display font-900 text-3xl text-gray-900">Center Locations</h2>
-
               {centers.map((center, i) => {
                 const colors = ['#FF6B47', '#2EC4B6', '#9B5DE5']
-                const bgs = ['#FFF4F1', '#EDFAFA', '#F5F0FF']
+                const bgs    = ['#FFF4F1', '#EDFAFA', '#F5F0FF']
                 return (
-                  <div
-                    key={center.id}
-                    className="rounded-3xl p-6"
-                    style={{ backgroundColor: bgs[i] }}
-                  >
-                    <h3
-                      className="font-display font-800 text-lg mb-4"
-                      style={{ color: colors[i] }}
-                    >
+                  <div key={center.id} className="rounded-3xl p-6" style={{ backgroundColor: bgs[i] }}>
+                    <h3 className="font-display font-800 text-lg mb-4" style={{ color: colors[i] }}>
                       {center.name}
                     </h3>
                     <ul className="space-y-3">
@@ -174,13 +187,8 @@ export default function Contact() {
                         <div>
                           <p>{center.address}</p>
                           <p>{center.city}, {center.state} {center.zip}</p>
-                          <a
-                            href={center.mapUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs flex items-center gap-1 mt-0.5 hover:underline"
-                            style={{ color: colors[i] }}
-                          >
+                          <a href={center.mapUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-xs flex items-center gap-1 mt-0.5 hover:underline" style={{ color: colors[i] }}>
                             <ExternalLink size={11} /> Directions
                           </a>
                         </div>
@@ -204,8 +212,6 @@ export default function Contact() {
                   </div>
                 )
               })}
-
-              {/* General contact */}
               <div className="bg-gray-900 rounded-3xl p-6 text-white">
                 <h3 className="font-display font-800 text-base mb-3">General Inquiries</h3>
                 <div className="flex items-center gap-2 text-sm text-gray-300 mb-2">
@@ -214,9 +220,7 @@ export default function Contact() {
                     info@creativelearningacademy.com
                   </a>
                 </div>
-                <p className="text-xs text-gray-500">
-                  We respond to all inquiries within 1 business day.
-                </p>
+                <p className="text-xs text-gray-500">We respond to all inquiries within 1 business day.</p>
               </div>
             </div>
           </div>
