@@ -179,7 +179,44 @@ export default function Home({ onEnrollClick }) {
         </div>
       </section>
 
-      {/* ─── CENTERS STRIP ─── */}
+
+      {/* ─── BRAND / LOGO INTRO ─── */}
+      <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center gap-10 justify-center">
+            <Link to="/logo-story" className="group flex-shrink-0">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.svg`}
+                alt="Creative Learning Academy Logo"
+                className="h-28 w-auto group-hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
+            <div className="max-w-lg text-center sm:text-left">
+              <h2 className="font-display font-900 text-2xl text-gray-900 mb-3">
+                Built on Four Colors, One Mission
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                Our logo captures everything we believe: the{' '}
+                <span className="text-brand-coral font-display font-700">warmth</span> of family,
+                the{' '}
+                <span className="text-brand-teal font-display font-700">growth</span> of learning,
+                the{' '}
+                <span className="font-display font-700" style={{ color: '#FFCB47' }}>joy</span> of childhood, and
+                the{' '}
+                <span className="text-brand-purple font-display font-700">spark</span> of imagination.
+              </p>
+              <Link
+                to="/logo-story"
+                className="inline-flex items-center gap-1 text-brand-coral font-display font-700 text-sm hover:gap-2 transition-all"
+              >
+                Discover the story behind our logo <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CENTERS STRIP ─── */
       <section className="bg-gray-900 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
