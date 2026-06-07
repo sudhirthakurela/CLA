@@ -36,10 +36,10 @@ export default function Navbar({ onEnrollClick }) {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-3">
-          {/* Logo */}
+          {/* Logo — goes home */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo.svg"
+              src={`${import.meta.env.BASE_URL}logo.svg`}
               alt="Creative Learning Academy"
               className="h-12 w-auto"
               onError={(e) => { e.target.style.display = 'none' }}
@@ -85,12 +85,10 @@ export default function Navbar({ onEnrollClick }) {
 
               {centersOpen && (
                 <>
-                  {/* Invisible backdrop to close on outside click — sits BEHIND the dropdown */}
                   <div
                     className="fixed inset-0 z-[55]"
                     onClick={() => setCentersOpen(false)}
                   />
-                  {/* Dropdown panel — z-[60] keeps it above the backdrop */}
                   <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-pop border border-gray-100 overflow-hidden z-[60]">
                     <div className="p-2">
                       <Link
