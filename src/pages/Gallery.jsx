@@ -1,33 +1,51 @@
-// Gallery page — displays a placeholder grid until real photos are added.
-// To add real photos: drop images into /public/gallery/ and update the `photos` array below.
-
-const categories = ['All', 'Infant & Toddler', 'Preschool', 'Arts & Crafts', 'Outdoors', 'Events']
-
-const placeholderPhotos = [
-  { id: 1, category: 'Arts & Crafts', emoji: '🎨', label: 'Painting in the atelier', color: '#FFF4F1', accent: '#FF6B47' },
-  { id: 2, category: 'Outdoors', emoji: '🌳', label: 'Nature walk at Arlington Main', color: '#EDFFF8', accent: '#06D6A0' },
-  { id: 3, category: 'Preschool', emoji: '📚', label: 'Storytime', color: '#F5F0FF', accent: '#9B5DE5' },
-  { id: 4, category: 'Events', emoji: '🎉', label: 'Spring Celebration', color: '#FFFBEE', accent: '#FFCB47' },
-  { id: 5, category: 'Infant & Toddler', emoji: '🍼', label: 'Tummy time & play', color: '#FFF0F4', accent: '#FF8FAB' },
-  { id: 6, category: 'Outdoors', emoji: '🌻', label: 'Garden exploration', color: '#EDFFF8', accent: '#06D6A0' },
-  { id: 7, category: 'Arts & Crafts', emoji: '🖼️', label: 'Mixed media project', color: '#FFF4F1', accent: '#FF6B47' },
-  { id: 8, category: 'Preschool', emoji: '🧩', label: 'Building block challenges', color: '#EDFAFA', accent: '#2EC4B6' },
-  { id: 9, category: 'Events', emoji: '🎭', label: 'Dramatic play showcase', color: '#F5F0FF', accent: '#9B5DE5' },
-  { id: 10, category: 'Infant & Toddler', emoji: '🎵', label: 'Music & rhythm class', color: '#FFF0F4', accent: '#FF8FAB' },
-  { id: 11, category: 'Preschool', emoji: '🔬', label: 'Science exploration lab', color: '#FFFBEE', accent: '#FFCB47' },
-  { id: 12, category: 'Outdoors', emoji: '🌈', label: 'Splash day fun', color: '#EDFAFA', accent: '#2EC4B6' },
-]
-
 import { useState } from 'react'
-import { Camera } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
+
+const BASE = import.meta.env.BASE_URL   // '/CLA/' in prod, '/' in dev
+const img  = (file) => `${BASE}gallery/${file}`
+
+const categories = ['All', 'Outdoors', 'Arts & Crafts', 'Little Chefs', 'Classroom Life', 'Science & Nature', 'Special Events', 'Awards']
+
+const photos = [
+  // ── Outdoor Adventures ──
+  { id: 1,  src: img('outdoor-soccer.jpeg'),     alt: 'Kids playing soccer outdoors',            category: 'Outdoors',          span: 'tall' },
+  { id: 2,  src: img('field-trip-bridge.jpeg'),  alt: 'Field trip — kids on a bridge',           category: 'Outdoors',          span: 'wide' },
+  { id: 3,  src: img('playground.jpeg'),         alt: 'Kids climbing on the playground',         category: 'Outdoors',          span: 'normal' },
+  { id: 4,  src: img('nature-explore.jpeg'),     alt: 'Children exploring nature together',      category: 'Science & Nature',  span: 'normal' },
+  { id: 5,  src: img('farm-visit.jpeg'),         alt: 'Field trip to an alpaca farm',            category: 'Outdoors',          span: 'wide' },
+  // ── Arts & Crafts ──
+  { id: 6,  src: img('painting.jpeg'),           alt: 'Boy painting with a brush',               category: 'Arts & Crafts',     span: 'tall' },
+  { id: 7,  src: img('sensory-paint.jpeg'),      alt: 'Child doing sensory paint exploration',   category: 'Arts & Crafts',     span: 'normal' },
+  { id: 8,  src: img('art-craft.jpeg'),          alt: 'Kids making crafts at the table',         category: 'Arts & Crafts',     span: 'wide' },
+  // ── Little Chefs ──
+  { id: 9,  src: img('little-chef-2.jpeg'),      alt: 'Little chefs making food together',       category: 'Little Chefs',      span: 'wide' },
+  { id: 10, src: img('little-chef-1.jpeg'),      alt: 'Young chef with spoon and cup',           category: 'Little Chefs',      span: 'tall' },
+  { id: 11, src: img('little-chef-3.jpeg'),      alt: 'Girl in chef hat creating her dish',      category: 'Little Chefs',      span: 'normal' },
+  { id: 12, src: img('dough-play.jpeg'),         alt: 'Child kneading dough',                    category: 'Little Chefs',      span: 'normal' },
+  // ── Classroom Life ──
+  { id: 13, src: img('circle-time.jpeg'),        alt: 'Teacher doing circle time with toddlers', category: 'Classroom Life',    span: 'wide' },
+  { id: 14, src: img('storytime.jpeg'),          alt: 'Storytime — reading about astronauts',    category: 'Classroom Life',    span: 'normal' },
+  { id: 15, src: img('reading-corner.jpeg'),     alt: 'Toddler reading in the cozy corner',      category: 'Classroom Life',    span: 'tall' },
+  { id: 16, src: img('classroom-setup.jpeg'),    alt: 'Creative classroom sensory station',      category: 'Classroom Life',    span: 'normal' },
+  // ── Science & Nature ──
+  { id: 17, src: img('gardening.jpeg'),          alt: 'Girl learning to plant seedlings',        category: 'Science & Nature',  span: 'tall' },
+  // ── Special Events ──
+  { id: 18, src: img('easter-event.jpeg'),       alt: 'Kids celebrating Easter with the bunny',  category: 'Special Events',    span: 'wide' },
+  // ── Awards ──
+  { id: 19, src: img('award-2025-daycare.jpeg'), alt: 'Arlington Best of 2025 — Day Care Center', category: 'Awards',           span: 'normal' },
+  { id: 20, src: img('award-2025.jpeg'),         alt: 'BusinessRate Best of 2025 Arlington',     category: 'Awards',            span: 'normal' },
+  { id: 21, src: img('award-ranked-1.jpeg'),     alt: '#1 Ranked Child Care Agency Arlington',   category: 'Awards',            span: 'normal' },
+  { id: 22, src: img('award-2024.jpeg'),         alt: 'Arlington Best of 2024 — Child Care',     category: 'Awards',            span: 'normal' },
+]
 
 export default function Gallery({ onEnrollClick }) {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [lightbox, setLightbox] = useState(null)
 
-  const filtered =
-    activeCategory === 'All'
-      ? placeholderPhotos
-      : placeholderPhotos.filter((p) => p.category === activeCategory)
+  const filtered = activeCategory === 'All'
+    ? photos
+    : photos.filter((p) => p.category === activeCategory)
 
   return (
     <div className="pt-20">
@@ -70,50 +88,68 @@ export default function Gallery({ onEnrollClick }) {
         </div>
       </section>
 
-      {/* ─── PHOTO NOTICE (remove once real photos are added) ─── */}
-      <div className="bg-yellow-50 border-b border-yellow-100 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-3 text-sm text-yellow-700">
-          <Camera size={18} className="flex-shrink-0" />
-          <p>
-            <strong>Coming soon:</strong> Real photos from our classrooms are on the way!
-            Drop images into <code className="bg-yellow-100 px-1.5 py-0.5 rounded text-xs">/public/gallery/</code> and
-            update <code className="bg-yellow-100 px-1.5 py-0.5 rounded text-xs">src/pages/Gallery.jsx</code> to display them.
-          </p>
-        </div>
-      </div>
-
-      {/* ─── GRID ─── */}
+      {/* ─── MASONRY GRID ─── */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-            {filtered.map((photo, i) => (
+            {filtered.map((photo) => (
               <div
                 key={photo.id}
-                className={`break-inside-avoid rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-all hover:-translate-y-1 ${
-                  i % 3 === 0 ? 'aspect-square' : i % 3 === 1 ? 'aspect-[4/3]' : 'aspect-[3/4]'
-                }`}
-                style={{ backgroundColor: photo.color }}
+                className="break-inside-avoid rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-all hover:-translate-y-1 cursor-pointer group"
+                onClick={() => setLightbox(photo)}
               >
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 min-h-40">
-                  <span className="text-6xl mb-4">{photo.emoji}</span>
-                  <p
-                    className="font-display font-700 text-sm text-center"
-                    style={{ color: photo.accent }}
-                  >
-                    {photo.label}
-                  </p>
-                  <span
-                    className="mt-2 text-xs font-display font-600 px-3 py-1 rounded-full"
-                    style={{ backgroundColor: photo.accent + '20', color: photo.accent }}
-                  >
-                    {photo.category}
-                  </span>
+                <div className="relative">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end">
+                    <div className="w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="bg-white/90 text-gray-800 font-display font-700 text-xs px-3 py-1.5 rounded-full">
+                        {photo.alt}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {filtered.length === 0 && (
+            <div className="text-center py-20 text-gray-400">
+              <p className="text-5xl mb-4">📷</p>
+              <p className="font-display font-700">No photos in this category yet.</p>
+            </div>
+          )}
         </div>
       </section>
+
+      {/* ─── LIGHTBOX ─── */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute -top-12 right-0 text-white/70 hover:text-white font-display font-700 text-sm flex items-center gap-2"
+            >
+              Close ✕
+            </button>
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="w-full h-auto max-h-[80vh] object-contain rounded-2xl"
+            />
+            <p className="text-white/70 text-sm font-display font-600 mt-3 text-center">
+              {lightbox.alt}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* ─── CTA ─── */}
       <section className="py-20 bg-white text-center">
@@ -124,12 +160,13 @@ export default function Gallery({ onEnrollClick }) {
           <p className="text-gray-500 text-lg mb-8">
             Schedule a free center tour and experience the CLA magic firsthand.
           </p>
-          <button
-            onClick={onEnrollClick}
-            className="bg-brand-coral text-white font-display font-800 px-10 py-4 rounded-2xl hover:bg-coral-600 transition-all shadow-card hover:-translate-y-1"
+          <Link
+            to="/contact"
+            state={{ scrollToForm: true }}
+            className="inline-flex items-center gap-2 bg-brand-coral text-white font-display font-800 px-10 py-4 rounded-2xl hover:bg-coral-600 transition-all shadow-card hover:-translate-y-1"
           >
-            Schedule a Tour
-          </button>
+            Schedule a Tour <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
     </div>
