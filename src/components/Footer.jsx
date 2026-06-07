@@ -14,7 +14,7 @@ export default function Footer({ onEnrollClick }) {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
-                src="/logo.svg"
+                src={`${import.meta.env.BASE_URL}logo.svg`}
                 alt="Creative Learning Academy"
                 className="h-10 w-auto"
                 onError={(e) => (e.target.style.display = 'none')}
@@ -43,6 +43,7 @@ export default function Footer({ onEnrollClick }) {
                 { to: '/centers', label: 'Our Centers' },
                 { to: '/gallery', label: 'Gallery' },
                 { to: '/contact', label: 'Contact & Enroll' },
+                { to: '/logo-story', label: 'Our Logo' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
