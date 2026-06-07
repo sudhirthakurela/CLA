@@ -61,14 +61,14 @@ export const centers = [
   {
     id: "arlington",
     slug: "arlington",
-    name: "Arlington",
-    fullName: "Creative Learning Academy — Arlington",
+    name: "Arlington Daycare LLC",
+    fullName: "Arlington Daycare LLC",
     tagline: "Expanding our community in Arlington",
     address: "84 Park Avenue Extension",
     city: "Arlington",
     state: "MA",
     zip: "",
-    phone: "857-555-0201",
+    phone: "857-225-4461",
     email: "arlingtonnorth@creativelearningacademy.com",
     hours: {
       weekdays: "7:00 AM – 6:00 PM",
