@@ -14,6 +14,8 @@ import Programs from "./pages/Programs"
 import Gallery from "./pages/Gallery"
 import Contact from "./pages/Contact"
 import LogoStory from "./pages/LogoStory"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsOfService from "./pages/TermsOfService"
 
 function NotFound() {
   return (
@@ -59,8 +61,8 @@ export default function App() {
           <Route path="/gallery"       element={<Gallery    {...enrollProps} />} />
           <Route path="/contact"       element={<Contact />} />
           <Route path="/logo-story"    element={<LogoStory  {...enrollProps} />} />
-          <Route path="/privacy"       element={<SimplePage title="Privacy Policy" />} />
-          <Route path="/terms"         element={<SimplePage title="Terms of Service" />} />
+          <Route path="/privacy"       element={<PrivacyPolicy />} />
+          <Route path="/terms"         element={<TermsOfService />} />
           <Route path="*"              element={<NotFound />} />
         </Routes>
       </main>
