@@ -6,22 +6,22 @@ import { programs } from '../data/programs'
 const testimonials = [
   {
     quote:
-      "My daughter lights up every morning when we pull into the parking lot. The teachers genuinely know and love every child here.",
-    author: 'Sarah M.',
-    location: 'Arlington Main',
+      "Ms. Poonam cares for our son with such attention to detail, loving kindness, and thoughtful care that we truly feel she is a partner in helping him grow and flourish. Each day he sees her, he lights up with happiness.",
+    author: 'Annemarie G.',
+    location: 'Arlington Heights',
     stars: 5,
   },
   {
     quote:
-      "The yoga and arts programs are incredible. My son is calmer, more creative, and so much more confident since starting here.",
-    author: 'James T.',
-    location: 'Arlington North',
+      "We used CLA for drop-in care during the holiday period. It was quick to get registered and we got daily updates via a phone app. The staff were lovely and took great care of our child. Highly recommended!",
+    author: 'Caroline S.',
+    location: 'Arlington',
     stars: 5,
   },
   {
     quote:
-      "We were nervous about transitioning from a nanny. The staff made our family feel at home immediately. Worth every penny.",
-    author: 'Priya K.',
+      "Creative Learning Academy in Harvard is an exceptional educational program. The teachers are compassionate, attentive, and highly supportive. My daughter looks forward to attending school every day!",
+    author: 'Mya M.',
     location: 'Harvard Center',
     stars: 5,
   },
@@ -452,7 +452,7 @@ export default function Home({ onEnrollClick }) {
           </h2>
           <p className="text-orange-100 text-lg mb-10 max-w-2xl mx-auto">
             Schedule a tour of any of our three centers and see for yourself why hundreds of
-            Arlington and Cambridge families trust Creative Learning Academy.
+            Arlington and Harvard families trust Creative Learning Academy.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button
