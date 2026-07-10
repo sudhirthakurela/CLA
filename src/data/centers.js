@@ -14,7 +14,7 @@ export const centers = [
     state: "MA",
     zip: "02476",
     phone: "857-318-3910",
-    email: "arlington@creativelearningacademy.com",
+    email: "daycarearlington@gmail.com",
     hours: {
       weekdays: "7:00 AM – 6:00 PM",
       saturday: "Closed",
@@ -69,7 +69,7 @@ export const centers = [
     state: "MA",
     zip: "",
     phone: "857-225-4461",
-    email: "arlingtonnorth@creativelearningacademy.com",
+    email: "creativelearningarlington@gmail.com",
     hours: {
       weekdays: "7:00 AM – 6:00 PM",
       saturday: "Closed",
